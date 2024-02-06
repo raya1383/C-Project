@@ -1220,11 +1220,11 @@ int balance_braces(char * filename){
         }
     }
 
-    /*if (openBrackets > 0) {
+    if (openBrackets > 0) {
         printf("Unmatched opening bracket found.\n");
     } else {
         printf("All brackets are properly matched.\n");
-    }*/
+    }
     
     fclose(file);
     return 1;
@@ -2087,7 +2087,8 @@ int main(int argc, char * argv[]) {
     print_command(argc, argv);
     FILE *command_file=fopen("command_file" , "a");
     fprintf(command_file ,"init\nadd\nreset\ncommit\ncheckout\nconfig\n");
-    FILE*file2=fopen(".neogit/commit/branch_names" , "r+");
+    
+    /*FILE*file2=fopen(".neogit/commit/branch_names" , "r+");
     if (fscanf(file2, "%s" ,raya )!=EOF)
     {   
         if (strcmp(raya , "master")==0)
@@ -2099,9 +2100,10 @@ int main(int argc, char * argv[]) {
     if (flag==0)
     {
         fprintf(file2, "master\n");
-    }
+    }*/
     //-----------00000------------0000000000-------------00000000000----------------0000000000000-------------00000000000000---------------00000000
     if (strcmp(argv[1], "init") == 0 ) {
+       
         return run_init(argc, argv);
 
     }else if (strcmp(argv[1] , "branch")==0 && argc==3)
@@ -2209,8 +2211,9 @@ int main(int argc, char * argv[]) {
     {   
         if (argc==2)
         {   
-            run_pre_commit(argc, argv);
-        }else if (strcmp(argv[3] , "list")==0)
+            //run_pre_commit(argc, argv);
+        }
+        else if (strcmp(argv[3] , "list")==0)
         {
             hook_list();
         }else if (strcmp(argv[2] , "applied")==0)
@@ -2284,7 +2287,7 @@ int main(int argc, char * argv[]) {
     
     
     fclose(command_file);
-    fclose(file2);
+   // fclose(file2);
     return 0;
        } }
 
